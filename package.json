@@ -1,0 +1,16 @@
+{
+  "name": "wx-mini-third",
+  "version": "1.0.0",
+  "description": "Wechat miniprogram Open API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.js"
+  },
+  "keywords": ["wechat third-party", "mini program third-party"],
+  "author": "chapin666",
+  "license": "MIT",
+  "dependencies": {
+    "wechat-crypto": "0.0.2",
+    "xml2js": "^0.4.19"
+  }
+}
