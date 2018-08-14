@@ -21,7 +21,7 @@ class WechatMiniOpenAPI {
     this._aesKey = aesKey;
     this._saveVerifyTicket = saveVerifyTicket;
     this._getVerifyTicket = getVerifyTicket;
-    this._saveVerifyTicket = saveTokenObj;
+    this._saveTokenObj = saveTokenObj;
     this._getTokenObj = getTokenObj;
 
     this.webHook = new WebHook(aesToken, aesKey, appid);
