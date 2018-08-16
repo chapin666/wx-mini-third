@@ -2,29 +2,27 @@
 
 
 const WebHook = require('./lib/webhook');
+const OAuth = require('./lib/oauth');
+const API = require('./lib/api');
 
 /**
  *
- * @class WechatMiniOpenAPI
+ * @class WXMiniProgramThird
  */
-class WechatMiniOpenAPI {
+class WXMiniProgramThird {
   
   constructor(
     appid, appsecret,
     aesToken, aesKey,
     saveVerifyTicket, getVerifyTicket,
-    saveTokenObj, getTokenObj){
-
-    this._appid = appid;
-    this._appsecret = appsecret;
-    this._aesToken = aesToken;
-    this._aesKey = aesKey;
+    saveComponentToken, getComponentToken){
+      
     this._saveVerifyTicket = saveVerifyTicket;
-    this._getVerifyTicket = getVerifyTicket;
-    this._saveTokenObj = saveTokenObj;
-    this._getTokenObj = getTokenObj;
+    this._getComponentToken = getComponentToken;
 
     this.webHook = new WebHook(aesToken, aesKey, appid);
+    this.oauth = new OAuth(appid, appsecret, getVerifyTicket, getComponentToken, saveComponentToken);
+    this.api = new API(appid, this.oauth);
   }
 
   /**
@@ -50,4 +48,4 @@ class WechatMiniOpenAPI {
 
 }
 
-module.exports = WechatMiniOpenAPI;
+module.exports = WXMiniProgramThird;
