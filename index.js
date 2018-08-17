@@ -15,14 +15,20 @@ class WXMiniProgramThird {
     appid, appsecret,
     aesToken, aesKey,
     saveVerifyTicket, getVerifyTicket,
-    saveComponentToken, getComponentToken){
+    saveComponentToken, getComponentToken,
+    saveAccessToken, getAccessToken, 
+    saveRefreshAccessToken, getRefreshAccessToken ){
       
     this._saveVerifyTicket = saveVerifyTicket;
     this._getComponentToken = getComponentToken;
 
     this.webHook = new WebHook(aesToken, aesKey, appid);
-    this.oauth = new OAuth(appid, appsecret, getVerifyTicket, getComponentToken, saveComponentToken);
-    this.api = new API(appid, this.oauth);
+    this.oauth = new OAuth(appid, appsecret, getVerifyTicket,
+      getComponentToken, saveComponentToken, 
+      saveAccessToken, getAccessToken,
+      saveRefreshAccessToken, getRefreshAccessToken);
+
+    this.api = new API(this.oauth);
   }
 
   /**

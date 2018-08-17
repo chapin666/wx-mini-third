@@ -7,10 +7,13 @@ const appkey = 'd3940fcc7b6ae7b2d75df989bbab1f8d';
 const aesToken = 'jhOboNh2wB7ipv9L7TSxU2LitkuPaxYh';
 const aesKey = '3l5gwSgdyO6o2t3r09futJuRYJ9tEJIpo7AWz0fGpj2';
 
-const wxMiniProgramThird = new WXMiniProgramThird(appid, appkey, aesToken, aesKey, saveTicket, getTicket, saveToken, getToken);
+const wxMiniProgramThird = new WXMiniProgramThird(appid, appkey, aesToken, aesKey, saveTicket, 
+  getTicket, saveToken, getToken, 
+  setAuthToken, getAuthToken,
+  setRefreshToken, getRefreshToken);
 
 
-let _ticket = 'ticket@@@TnIHg0TiLEQB_toV1sIy7oQVfMrt_u0ZZbYFwYRboq83ziPU71JBZlmWYFImIlt7IdTg8fEfGKUS_tZEKJKEBA';
+let _ticket = 'ticket@@@Bi6F7pge70BoaKcjNgu7h4BrMqcXPc8ZCIAUtQcmIUbjuhr1TqUNklNxXIN1n2bR-UNSVFdeKqcGf0XjZ_MHIg';
 let _token = '';
 async function saveTicket(ticket) {
   console.log(`saveTicket: ${ticket}`);
@@ -30,6 +33,30 @@ async function getToken() {
   return _token;
 }
 
+async function setAuthToken(appId, token) {
+  const tokenString = JSON.stringify(token);
+  console.log('setAuthToken');
+  console.log(appId);
+  console.log(tokenString);
+  console.log();
+}
+
+async function getAuthToken() {
+  return null;
+}
+
+async function setRefreshToken(appId, token) {
+  const tokenString = JSON.stringify(token);
+  console.log('setRefreshToken');
+  console.log(appId);
+  console.log(tokenString);
+  console.log();
+}
+
+async function getRefreshToken(appId) {
+  return { componentAccessToken: 'refreshtoken@@@_cbFpzB9k6jt_xXzqb3xN980thFTmRqdx3-thtpfyNE' };
+}
+
 
 // ((xml) => {
 //   wxMiniProgramThird.eventTicket(xml);
@@ -47,6 +74,10 @@ async function getToken() {
     const code = await wxMiniProgramThird.oauth.getPreAuthCode();
     console.log(code);
     console.log();
+
+    const appid = 'wxb3848b0c772c2b30';
+    const refreshToken = await wxMiniProgramThird.oauth.refreshAccessToken(appid);
+    console.log(JSON.stringify(refreshToken));
   } catch(e) {
     console.log(e);
   }
