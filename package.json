@@ -1,6 +1,6 @@
 {
   "name": "wx-mini-third",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Wechat miniprogram Open API",
   "main": "index.js",
   "scripts": {
