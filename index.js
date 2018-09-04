@@ -49,7 +49,7 @@ class WXMiniProgramThird {
    * @memberof WechatMiniOpenAPI
    */
   async eventMsg(xml) {
-    return await this.webHook.parseXML2JSON(xml);
+    return await this.webHook.eventMsg(xml);
   }
 
 }
